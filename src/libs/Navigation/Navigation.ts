@@ -1,6 +1,7 @@
 import {findFocusedRoute, getActionFromState} from '@react-navigation/core';
 import {CommonActions, EventMapCore, getPathFromState, NavigationState, PartialState, StackActions} from '@react-navigation/native';
 import findLastIndex from 'lodash/findLastIndex';
+import deepReplaceKeysAndValues from '@libs/deepReplaceKeysAndValues';
 import Log from '@libs/Log';
 import CONST from '@src/CONST';
 import NAVIGATORS from '@src/NAVIGATORS';
@@ -282,6 +283,17 @@ function setIsNavigationReady() {
 }
 
 /**
+ * Replace a given reportID in the navigation stack.
+ *
+ * @param oldReportID - id of report to be replaced in the navigation state
+ * @param newReportID - id of report to be set in the naviagtion state
+ */
+function replaceReportIDInNavigationStack(oldReportID: string, newReportID: string) {
+    const updatedState = deepReplaceKeysAndValues(navigationRef.getRootState(), oldReportID, newReportID);
+    navigationRef.resetRoot(updatedState);
+}
+
+/**
  * Checks if the navigation state contains routes that are protected (over the auth wall).
  *
  * @param state - react-navigation state object
@@ -341,6 +353,7 @@ export default {
     getRouteNameFromStateEvent,
     getTopmostReportActionId,
     waitForProtectedRoutes,
+    replaceReportIDInNavigationStack,
 };
 
 export {navigationRef};
