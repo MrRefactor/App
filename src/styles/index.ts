@@ -4149,6 +4149,14 @@ const styles = (theme: ThemeColors) =>
             borderColor: theme.icon,
         },
 
+        chatItemDateIndicatorWrapper: {
+            zIndex: 1,
+        },
+
+        chatItemDateIndicator: {
+            backgroundColor: theme.border,
+        },
+
         colorSchemeStyle: (colorScheme: ColorScheme) => ({colorScheme}),
     } satisfies Styles);
 

@@ -75,6 +75,7 @@ import ReportActionItemSingle from './ReportActionItemSingle';
 import ReportActionItemThread from './ReportActionItemThread';
 import reportActionPropTypes from './reportActionPropTypes';
 import ReportAttachmentsContext from './ReportAttachmentsContext';
+import ReportDateIndicator from './ReportDateIndicator';
 
 const propTypes = {
     ...windowDimensionsPropTypes,
@@ -117,6 +118,9 @@ const propTypes = {
 
     /** The user's wallet account */
     userWallet: userWalletPropTypes,
+
+    /** Should we show the date indicator? */
+    showDateIndicator: PropTypes.bool.isRequired,
 };
 
 const defaultProps = {
@@ -670,6 +674,7 @@ function ReportActionItem(props) {
             withoutFocusOnSecondaryInteraction
             accessibilityLabel={props.translate('accessibilityHints.chatMessage')}
         >
+            {props.showDateIndicator && <ReportDateIndicator created={props.action.created} />}
             <Hoverable
                 shouldHandleScroll
                 disabled={!_.isUndefined(props.draftMessage)}

@@ -33,6 +33,9 @@ const propTypes = {
 
     /** Linked report action ID */
     linkedReportActionID: PropTypes.string,
+
+    /** should we display? */
+    showDateIndicator: PropTypes.bool.isRequired,
 };
 
 const defaultProps = {
@@ -49,6 +52,7 @@ function ReportActionsListItemRenderer({
     shouldHideThreadDividerLine,
     shouldDisplayNewMarker,
     linkedReportActionID,
+    showDateIndicator,
 }) {
     const shouldDisplayParentAction =
         reportAction.actionName === CONST.REPORT.ACTIONS.TYPE.CREATED &&
@@ -79,6 +83,7 @@ function ReportActionsListItemRenderer({
             }
             isMostRecentIOUReportAction={reportAction.reportActionID === mostRecentIOUReportActionID}
             index={index}
+            showDateIndicator={showDateIndicator}
         />
     );
 }
