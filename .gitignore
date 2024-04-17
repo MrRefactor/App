@@ -20,6 +20,7 @@ DerivedData
 *.hmap
 *.ipa
 *.xcuserstate
+**/.xcode.env.local
 *.cer
 *.p12
 *.mobileprovision
@@ -73,7 +74,7 @@ android/app/android-fastlane-json-key.json
 *.jsbundle
 
 # Ruby / CocoaPods
-/ios/Pods/
+**/Pods/
 /vendor/bundle/
 
 # Local DEV config
@@ -112,6 +113,14 @@ tsconfig.tsbuildinfo
 # Yalc
 .yalc
 yalc.lock
+
+# Yarn
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
 
 # Expo
 .expo
